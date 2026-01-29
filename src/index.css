@@ -1,0 +1,366 @@
+@import "tailwindcss";
+
+@layer base {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  :root {
+    /* Light (Parchment) */
+    --bg-main: #f5f1e8;
+    --bg-paper: #efe6d8;
+    --text-main: #2b2a28;
+    --text-muted: #5a5246;
+    --accent: #6b2c2c;
+    --border-soft: #d6cbb8;
+  }
+
+  .dark {
+    /* Dark (Candlelight) */
+    --bg-main: #1c1a17;
+    --bg-paper: #26231e;
+    --text-main: #e6dfd2;
+    --text-muted: #b9b2a6;
+    --accent: #8b3a3a;
+    --border-soft: #3a342c;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+    font-family: "EB Garamond", serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-size: 18px;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    color: var(--text-main);
+  }
+
+  a {
+    text-underline-offset: 3px;
+    color: var(--text-main);
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+}
+@layer components {
+  .article {
+    background-color: var(--bg-paper);
+    border: 1px solid var(--border-soft);
+    @apply mx-auto my-10 px-8 py-12;
+    max-width: 1600px;
+  }
+  .drop-cap p:first-of-type::first-letter {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 4.5rem;
+    float: left;
+    line-height: 1;
+    padding-right: 0.5rem;
+    padding-top: 0.2rem;
+    color: var(--accent);
+  }
+  .meta {
+    font-family: "Libre Baskerville", serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .quote {
+    border-left: 3px solid var(--border-soft);
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+  .btn-vintage {
+    font-family: "Libre Baskerville", serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid var(--border-soft);
+    padding: 0.5rem 1.5rem;
+    background: transparent;
+    color: var(--text-main);
+  }
+
+  .btn-vintage:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  /* Ensure proper spacing in blog content */
+  .prose-content h2,
+  .prose-content h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose-content strong {
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .prose-content em {
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .prose-content a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-content blockquote {
+    border-left: 3px solid var(--border-soft);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .prose-content ul,
+  .prose-content ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+  }
+
+  .prose-content li {
+    margin-bottom: 0.75rem;
+  }
+}
+
+@layer utilities {
+  .text-ink {
+    color: var(--text-main);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  .bg-paper {
+    background-color: var(--bg-paper);
+  }
+
+  .border-soft {
+    border-color: var(--border-soft);
+  }
+
+  .accent {
+    color: var(--accent);
+  }
+
+  .reading-width {
+    max-width: 720px;
+  }
+
+  .small-caps {
+    font-variant: small-caps;
+    letter-spacing: 0.12em;
+  }
+}
+
+@layer base {
+  body {
+    font-size: 16px;
+  }
+
+  @media (min-width: 640px) {
+    body {
+      font-size: 17px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      font-size: 19px;
+    }
+  }
+}
+@layer base {
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+  }
+
+  h3 {
+    font-size: clamp(1.4rem, 3vw, 1.7rem);
+  }
+}
+/* @layer base {
+  p {
+    max-width: 65ch;
+  }
+} */
+@layer utilities {
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animatedButton {
+    animation: spin-slow 15s linear infinite;
+  }
+}
+
+@layer utilities {
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out;
+  }
+}
+
+
+
+/* Quill Editor Victorian Styling */
+.quill-editor-wrapper .ql-toolbar {
+  background-color: var(--bg-paper) !important;
+  border: none !important;
+  border-radius: 1rem;
+  border-bottom: 1px solid var(--border-soft) !important;
+  font-family: "Libre Baskerville", serif !important;
+}
+
+.quill-editor-wrapper .ql-container {
+  background-color: var(--bg-paper) !important;
+  border: none !important;
+  border-radius: 1rem;
+  font-family: "EB Garamond", serif !important;
+  font-size: 18px !important;
+  line-height: 1.75 !important;
+  min-height: 400px !important;
+}
+
+.quill-editor-wrapper .ql-editor {
+  color: var(--text-main) !important;
+  padding: 1rem !important;
+}
+
+.quill-editor-wrapper .ql-editor.ql-blank::before {
+  color: var(--text-muted) !important;
+  font-style: italic !important;
+  left: 1.5rem !important;
+}
+.quill-editor-wrapper .ql-editor.ql-blank p {
+  height: 400px !important;
+}
+.quill-editor-wrapper .ql-toolbar button {
+  color: var(--text-main) !important;
+}
+
+.quill-editor-wrapper .ql-toolbar button:hover,
+.quill-editor-wrapper .ql-toolbar button.ql-active {
+  color: var(--accent) !important;
+}
+
+.quill-editor-wrapper .ql-stroke {
+  stroke: var(--text-main) !important;
+}
+
+.quill-editor-wrapper .ql-toolbar button:hover .ql-stroke,
+.quill-editor-wrapper .ql-toolbar button.ql-active .ql-stroke {
+  stroke: var(--accent) !important;
+}
+
+.quill-editor-wrapper .ql-fill {
+  fill: var(--text-main) !important;
+}
+
+.quill-editor-wrapper .ql-toolbar button:hover .ql-fill,
+.quill-editor-wrapper .ql-toolbar button.ql-active .ql-fill {
+  fill: var(--accent) !important;
+}
+
+.quill-editor-wrapper .ql-picker-label {
+  color: var(--text-main) !important;
+}
+
+.quill-editor-wrapper .ql-picker-options {
+  background-color: var(--bg-paper) !important;
+  border: 1px solid var(--border-soft) !important;
+}
+
+.quill-editor-wrapper .ql-picker-item:hover {
+  color: var(--accent) !important;
+}
+/* Ensure images and videos in Quill editor are properly sized */
+.quill-editor-wrapper .ql-editor img,
+.quill-editor-wrapper .ql-container img {
+  max-width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  display: block;
+  border: 1px solid var(--border-soft);
+}
+
+.quill-editor-wrapper .ql-editor video,
+.quill-editor-wrapper .ql-container video {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  display: block;
+  margin: 1rem auto;
+  border: 1px solid var(--border-soft);
+  background-color: #000;
+}
+
+/* Ensure video tag displays properly */
+.quill-editor-wrapper .ql-editor video source,
+.quill-editor-wrapper .ql-container video source {
+  display: none;
+}
+
+/* Proper paragraph spacing for media */
+.quill-editor-wrapper .ql-editor p:has(img),
+.quill-editor-wrapper .ql-editor p:has(video),
+.quill-editor-wrapper .ql-container p:has(img),
+.quill-editor-wrapper .ql-container p:has(video) {
+  margin: 1.5rem 0;
+}
