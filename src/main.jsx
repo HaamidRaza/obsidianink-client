@@ -4,11 +4,7 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { ClerkProvider } from "@clerk/clerk-react";
-import {
-  MutationObserver,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
 import { HelmetProvider } from "react-helmet-async";
 import axios from "axios";
@@ -27,7 +23,7 @@ createRoot(document.getElementById("root")).render(
         <HelmetProvider>
           <App />
         </HelmetProvider>
-        <ToastContainer position="bottom-right"/>
+        <ToastContainer position="bottom-right" />
       </QueryClientProvider>
     </ClerkProvider>
   </BrowserRouter>,
