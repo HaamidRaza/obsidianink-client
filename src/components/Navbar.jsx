@@ -225,12 +225,14 @@ const Navbar = () => {
           >
             Blog List
           </Link>
-          <Link
-            to="/dashboard"
-            className="btn-vintage cursor-pointer transition-all text-[0.65rem] sm:text-[0.75rem] px-3 py-2 sm:px-6 sm:py-3"
-          >
-            Dashboard
-          </Link>
+          {role && (
+            <button
+              onClick={() => navigate("/dashboard")}
+              className="btn-vintage cursor-pointer transition-all text-[0.65rem] sm:text-[0.75rem] px-3 py-2 sm:px-6 sm:py-3"
+            >
+              Dashboard
+            </button>
+          )}
           <SignedOut>
             <button
               onClick={() => navigate("/login")}
